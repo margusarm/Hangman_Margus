@@ -7,6 +7,9 @@ kategooriatega teada. Vastavad nupud **Edetabel** ja **Sõnad**. Osaliselt on he
 neist peaks olema täisfunktsionaalsuses hetke seisuga. **Katkesta mäng** nupp tuleb nähtavale, kui vajutatakse Uus mäng nuppu. Ja see nupp 
 peab kaduma, kui mäng lõppeb või mäng katkestatakse. 
 
+## NB!
+**Refactor, projekti nimeks Hangman_Eesnimi, kus eesnimi on sinu eesnimi ilma täpitähtedeta ja tühikuteta!**
+
 ## Funktsionaalsus
 **Uus mäng** – Vastavalt kasutaja kategooria valikule tuleb valida tabelist/Listist (_kumb on mugavam_) juhuslik sõna. Kui valikuks 
 on **Kõik kategooriad**, siis kõikide sõnade seast, kui aga kindel kategooria, siis ainult selle kategooria sõnade seast. Kui sõna on teada, algab
