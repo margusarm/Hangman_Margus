@@ -5,7 +5,7 @@
 Mängus on graafiline osa kõik tehtud ning lisaks on ka osa funktsionaalsust olemas. Näiteks on vaadatav edetabel ja arvatavad sõnad koos 
 kategooriatega teada. Vastavad nupud **Edetabel** ja **Sõnad**. Osaliselt on hetke seisuga tööle pandud **Uus mäng** ning **Katkesta mäng**. Viimane 
 neist peaks olema täisfunktsionaalsuses hetke seisuga. **Katkesta mäng** nupp tuleb nähtavale, kui vajutatakse Uus mäng nuppu. Ja see nupp 
-peab kaduma, kui mäng lõppeb.
+peab kaduma, kui mäng lõppeb või mäng katkestatakse. 
 
 ## Funktsionaalsus
 **Uus mäng** – Vastavalt kasutaja kategooria valikule tuleb valida tabelist/Listist (_kumb on mugavam_) juhuslik sõna. Kui valikuks 
@@ -25,6 +25,7 @@ valesti läheb, siis JLabel, mis vigade infot näitab läheb punaseks. Kui mäng
 Nime küsimiseks kasuta **JOptionPane.showInputDialog** lahendust. Kui kasutaja nime ei sisesta, siis kasutajat ka edetabelisse ei lisata. 
 Kui kasutaja kirjutab alla 2 märgise nime, siis ka kasutajat edetabelisse ei lisata. Lisaks antakse kasutajale ka teada, et vigase info 
 puhul teda edetabelisse ei lisata (tagant järgi).
+**Katkesta mäng** - kui seda klikitakse, siis kedagi kuhugi ei lisata. Seadistatakse algseis, et saaks alustada uut mängu (klikkida nupul **Uus mäng**). 
 
 ## Mis info on vaja lisada edetabeli faili?
 Hetke kuupäev koos kellaajaga kujul AAAA-KK-PP HH:MM:SS. Antud tabel tahab seda aega sõnena. Mängija nimi sõnena. Sõna mida arvati. 
