@@ -20,7 +20,7 @@ tühik.~~
 ~~**Saada täht –** Kui lahtrisse **Sisesta täht** on täht sisestatud ja nupule **Saada täht** (_k.a. Enter klahvi vajutus_) vajutatud, siis 
 tehakse kontroll. Kas täht on arvatavas sõnas olemas või mitte. Kui sisestatud täht on sõnas olemas, siis kõik need tähed sõnas tulevad 
 kasutajale nähtavale. Tähed on TRÜKITÄHTEDEGA. Teadmata tähed on all kriipsud (_). Iga puuduv täht on üks all kriips. Nupp Saada täht 
-töötab ka Enter klahvi vajutusega!~~ See töötas juba enne ka enteriga :\
+töötab ka Enter klahvi vajutusega!~~
 Ma lisasin selle, et kui sõna keskel on täht, mis kattub esimese või viimase tähega, siis seda kinni ei kaeta. 
 Pole küll nõutud, aga mina mäletan, et hangmanis oli nii.
 
@@ -29,8 +29,8 @@ Pole küll nõutud, aga mina mäletan, et hangmanis oli nii.
 temalt nime (nimi vähemalt 2 tähte pikk) ning vajalik info lisatakse edetabelisse.
 
 ~~Kui tähega pandi mööda, siis tekst **Valesti 0 täht(e).**, number kasvab ning peale punkti näidatakse valesti sisestatud tähti 
-trükitähtedega eraldatud komadega.~~ Sama tähtede rida läheb ka edetabelisse, kui saadakse all 7 vale täheta hakkama. Kui esimene täht 
-valesti läheb, siis JLabel, mis vigade infot näitab läheb punaseks. Kui mäng saab läbi, siis muutub tekst jälle mustaks.  
+trükitähtedega eraldatud komadega.~~ Sama tähtede rida läheb ka edetabelisse, ~~kui saadakse all 7 vale täheta hakkama. Kui esimene täht 
+valesti läheb, siis JLabel, mis vigade infot näitab läheb punaseks. Kui mäng saab läbi, siis muutub tekst jälle mustaks.~~  
 Nime küsimiseks kasuta **JOptionPane.showInputDialog** lahendust. Kui kasutaja nime ei sisesta, siis kasutajat ka edetabelisse ei lisata. 
 Kui kasutaja kirjutab alla 2 märgise nime, siis ka kasutajat edetabelisse ei lisata. Lisaks antakse kasutajale ka teada, et vigase info 
 puhul teda edetabelisse ei lisata (tagant järgi).

@@ -4,6 +4,7 @@ import models.Model;
 import views.View;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,7 +39,13 @@ public class ButtonSend implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        //FIXME kogu see jura, mis siin all kirjas on, tuleks pisut paremini kokku võtta
         //JOptionPane.showMessageDialog(null, "Kes vajutas nuppu/Enter: " + view.getTxtChar().getText().toUpperCase());
+        /*
+         * @author Margus Arm
+         * @date 15/06/2022 - 23:00
+         * töötab ka nii, et requestFocus jääb algusesse...
+         */
         view.getTxtChar().requestFocus(); // Peale selle nupu klikkimist anna fookus tekstikastile
         String guessStringChar = view.getTxtChar().getText().toUpperCase();
         char guessChar = guessStringChar.charAt(0);
@@ -62,6 +69,7 @@ public class ButtonSend implements ActionListener {
 
         if (miss){
             model.getMissedWordsList().add(guessStringChar);
+            view.getLblWrongInfo().setForeground(Color.RED);
         }
 
         //String test = model.getRandomWord();

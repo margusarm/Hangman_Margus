@@ -142,7 +142,7 @@ public class View extends JFrame {
         getBtnNew().setEnabled(false); // Mängimise ajal ei saa uut mängu alustada
         getBtnWords().setEnabled(false);   // Sõnu ja kategooriaid ei saa mängu ajal vaadata!
         getTxtChar().setEnabled(true); // Tähte saab sisestada
-        /**
+        /*
          * @author Margus Arm
          * @date 15/06/2022 - 15:50
          * getBtnSend().setEnabled(true); // Saada täht nuppu saab kasutada
@@ -169,5 +169,6 @@ public class View extends JFrame {
         getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
         getLblGuessWord().setText("P R O O _ I  U _ E S T I   :D");
+
     }
 }
