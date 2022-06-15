@@ -1,9 +1,11 @@
 package views;
 
+import listeners.JButtonStateController;
 import listeners.TextFieldLimit;
 import models.Model;
 
 import javax.swing.*;
+import javax.swing.text.Document;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -111,12 +113,15 @@ public class ChoicesPanel extends JPanel {
         gbc.gridx = 1;  // Veerg
         gbc.gridy = 1;  // Rida
         pnlComponents.add(txtChar, gbc);
+        Document document = txtChar.getDocument(); // selleks, et kontrollida Send nuppu. JbuttonStateControlleri jaoks vaja
+
 
         btnSend = new JButton("Saada täht");
         btnSend.setEnabled(false); // Vaikimisi ei saa seda nuppu klikkida
         gbc.gridx = 2;  // Veerg
         gbc.gridy = 1;  // Rida
         pnlComponents.add(btnSend, gbc);
+        document.addDocumentListener(new JButtonStateController(btnSend)); // send nupp muutub aktiivseks ainult siis, kui on lisatud mõni täht
 
         // KOLMAS rida
         lblWrongInfo = new JLabel("Valesti 0 täht(e). ", JLabel.CENTER); // Label joondatakse lahtrite keskele

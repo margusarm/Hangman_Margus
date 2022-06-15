@@ -42,6 +42,8 @@ public class Model {
      */
     private String randomWord;
     private StringBuilder hiddenWord;
+    private List<String> missedWordslist = new ArrayList<>();
+    private int missedWordsCount;
 
     /**
      * Konstruktor
@@ -169,6 +171,20 @@ public class Model {
         return hiddenWord;
     }
 
+    public List<String> getMissedWordsList() {
+        return missedWordslist;
+    }
+
+    public int getMissedWordsCount() {
+        return missedWordsCount;
+    }
+    //SETTERS
+
+
+    public void setMissedWordsCount(int missedWordsCount) {
+        this.missedWordsCount = missedWordsCount;
+    }
+
     /**
      * Võtab kategooria ja kuvab vastavad sõnad listi ning võtab lambi sõna
      * @param category
@@ -193,7 +209,9 @@ public class Model {
         this.randomWord = randomWord.toUpperCase();                  // kuvab selle sõna ja teeb suured tähed
         hideWord(); // tekitab ka peidetud sõna
     }
+
     public void hideWord() {
+        //FIXME kui sõna sees on esimene või viimane täht, siis peaks need ka avatud olema
         StringBuilder newWord = new StringBuilder(this.randomWord); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
         for (int i = 1; i < this.randomWord.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
             newWord.setCharAt(i, '_');
@@ -215,3 +233,4 @@ public class Model {
         this.hiddenWord.setCharAt(i,c);
     }
 }
+

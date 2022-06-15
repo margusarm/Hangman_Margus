@@ -142,8 +142,15 @@ public class View extends JFrame {
         getBtnNew().setEnabled(false); // Mängimise ajal ei saa uut mängu alustada
         getBtnWords().setEnabled(false);   // Sõnu ja kategooriaid ei saa mängu ajal vaadata!
         getTxtChar().setEnabled(true); // Tähte saab sisestada
-        getBtnSend().setEnabled(true); // Saada täht nuppu saab kasutada
+        /**
+         * @author Margus Arm
+         * @date 15/06/2022 - 15:50
+         * getBtnSend().setEnabled(true); // Saada täht nuppu saab kasutada
+         * tegin selle mitteaktiivseks, sest mujal on lahendus, kus nupp läheb aktiivseks
+         * ainult siis, kui kasti on midagi kirjutatud
+         */
         getBtnCancel().setVisible(true);   // Mängu saab katkestada
+        model.getMissedWordsList().clear(); //teeb valesti arvatud tähtede listi tühjaks
         //getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         //getLblWrongInfo().setForeground(Color.RED); // Muuda teksti värv vaikimsii mustaks
     }
@@ -161,5 +168,7 @@ public class View extends JFrame {
         getTxtChar().setText("");   // Sisestatud tähe tühjendamine
         getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
+        //FIXME siia tuleb lisada, et nulliks ära ka arvatava sõna
+
     }
 }
