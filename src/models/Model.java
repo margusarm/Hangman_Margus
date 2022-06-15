@@ -211,10 +211,15 @@ public class Model {
     }
 
     public void hideWord() {
-        //FIXME kui sõna sees on esimene või viimane täht, siis peaks need ka avatud olema
         StringBuilder newWord = new StringBuilder(this.randomWord); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
         for (int i = 1; i < this.randomWord.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
-            newWord.setCharAt(i, '_');
+            char toCheck = newWord.charAt(i);
+            char firstChar = newWord.charAt(0);
+            char lastChar = newWord.charAt(newWord.length()-1);
+            if (toCheck != firstChar && toCheck !=lastChar){ //jätab viimase ja esimese tähega samad sõnad ka mittepeidetuks
+                newWord.setCharAt(i, '_');
+            }
+
         }
         this.hiddenWord = newWord;
     }

@@ -21,6 +21,8 @@ tühik.~~
 tehakse kontroll. Kas täht on arvatavas sõnas olemas või mitte. Kui sisestatud täht on sõnas olemas, siis kõik need tähed sõnas tulevad 
 kasutajale nähtavale. Tähed on TRÜKITÄHTEDEGA. Teadmata tähed on all kriipsud (_). Iga puuduv täht on üks all kriips. Nupp Saada täht 
 töötab ka Enter klahvi vajutusega!~~ See töötas juba enne ka enteriga :\
+Ma lisasin selle, et kui sõna keskel on täht, mis kattub esimese või viimase tähega, siis seda kinni ei kaeta. 
+Pole küll nõutud, aga mina mäletan, et hangmanis oli nii.
 
 ~~Kui tähte ei olnud sõnas, siis loetakse kokku mitmes mööda pandud täht oli. Lisaks jäetakse täht meelde (SUURTÄHENA). Kui mööda on pandud 
 7 või rohkem tähte, siis lõppeb mäng ära.~~ Kasutajat edetabelisse ei lisata. Kui kasutaja arvab sõna ära enne seitset sammu, siis küsitakse 
