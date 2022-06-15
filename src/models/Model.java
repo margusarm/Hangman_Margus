@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 /**
@@ -36,6 +37,11 @@ public class Model {
      * Andmebaasi ühendust algselt pole
      */
     Connection connection = null;
+    /**
+     * Sõna, mis tekib, kui uus mäng vajutada
+     */
+    private String randomWord;
+    private StringBuilder hiddenWord;
 
     /**
      * Konstruktor
@@ -148,10 +154,26 @@ public class Model {
     }
 
     /**
+     * Tagastab suvalise valitud sõna kategooriast.
+     * @return
+     */
+    public String getRandomWord() {
+        return randomWord;
+    }
+
+    /**
+     * Tagastab suvalise valitud sõna selliselt, et keskmised sõnad on peidetud "_" alla.
+     * @return
+     */
+    public StringBuilder getHiddenWord() {
+        return hiddenWord;
+    }
+
+    /**
      * Võtab kategooria ja kuvab vastavad sõnad listi ning võtab lambi sõna
      * @param category
      */
-    public String getWordByCategory(String category){
+    public void setRandomWordByCategory(String category){
         List<String> wordsList = new ArrayList<>();     //loob uue listi, mille seast valida
         Random random = new Random();                   // uuele listile random valiku tegemiseks
         String randomWord;                              // sõna, mis lõpuks kuvatakse
@@ -168,6 +190,28 @@ public class Model {
             randomWord = wordsList.get(random.nextInt(wordsList.size()));           // valib suvalise sõna wordsListist
         }
 
-        return randomWord;                  // kuvab selle sõna
+        this.randomWord = randomWord.toUpperCase();                  // kuvab selle sõna ja teeb suured tähed
+        hideWord(); // tekitab ka peidetud sõna
+    }
+    public void hideWord() {
+        StringBuilder newWord = new StringBuilder(this.randomWord); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
+        for (int i = 1; i < this.randomWord.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
+            newWord.setCharAt(i, '_');
+        }
+        this.hiddenWord = newWord;
+    }
+    public String wordSpacer(String word) {
+        String[] wordCharArray = word.split("");        //teeb sõna arrayks
+        StringJoiner join = new StringJoiner(" "); // äkki peaks kaks tühikut panema.
+        String spacedWord;
+        for (String w : wordCharArray){                     //käib kõik tähed ükshaaval läbi ja lisab tühiku.
+            join.add(w);
+            //System.out.println(w);
+        }
+        return join.toString();
+    }
+
+    public void guessedWords(int i, char c){
+        this.hiddenWord.setCharAt(i,c);
     }
 }
