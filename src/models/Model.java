@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -144,5 +145,29 @@ public class Model {
      */
     public List<DataWords> getDataWords() {
         return dataWords;
+    }
+
+    /**
+     * Võtab kategooria ja kuvab vastavad sõnad listi ning võtab lambi sõna
+     * @param category
+     */
+    public String getWordByCategory(String category){
+        List<String> wordsList = new ArrayList<>();     //loob uue listi, mille seast valida
+        Random random = new Random();                   // uuele listile random valiku tegemiseks
+        String randomWord;                              // sõna, mis lõpuks kuvatakse
+        if (category.equalsIgnoreCase("Kõik kategooriad")){                 //kui on kõik kategooriad, siis valib kõikide sõnade seast
+            randomWord = dataWords.get(random.nextInt(dataWords.size())).getWord();
+        } else {
+            for(DataWords word : dataWords){
+                if (category.equalsIgnoreCase(word.getCategory())){                 //kui on kindel kategooria, siis lisab wordsListi need sõnad
+                    //System.out.println(word.getWord());
+                    wordsList.add(word.getWord());
+                }
+
+            }
+            randomWord = wordsList.get(random.nextInt(wordsList.size()));           // valib suvalise sõna wordsListist
+        }
+
+        return randomWord;                  // kuvab selle sõna
     }
 }
