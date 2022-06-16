@@ -1,5 +1,6 @@
 package listeners;
 
+import models.DataScores;
 import models.Model;
 import views.View;
 
@@ -7,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.Locale;
 
 /**
  * Klass nupu Saada täht jaoks
@@ -40,6 +43,8 @@ public class ButtonSend implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //FIXME kogu see jura, mis siin all kirjas on, tuleks pisut paremini kokku võtta
+        //FIXME kui kasutaja pakub tähti, mis on esimene või viimane, siis neid ei tohiks arvesse võtta
+        //FIXME sümboleid ei tohiks saada pakkuda.
         //JOptionPane.showMessageDialog(null, "Kes vajutas nuppu/Enter: " + view.getTxtChar().getText().toUpperCase());
         /*
          * @author Margus Arm
@@ -49,7 +54,7 @@ public class ButtonSend implements ActionListener {
         view.getTxtChar().requestFocus(); // Peale selle nupu klikkimist anna fookus tekstikastile
         String guessStringChar = view.getTxtChar().getText().toUpperCase();
         char guessChar = guessStringChar.charAt(0);
-        String guessWord = model.getRandomWord();
+        String guessWord = model.getRandomWordUpperCase();
         String[] wordCharArray = guessWord.split(""); //tee arvatav sõna arrayks
         boolean miss = true;
 
@@ -85,12 +90,22 @@ public class ButtonSend implements ActionListener {
         view.getTxtChar().setText("");
 
         if (!model.getHiddenWord().toString().contains("_")){ //kontrollib, ega võitnud juba ei ole
-            JOptionPane.showMessageDialog(null,"Võitsid, ei olegi jobu!", "WINNER WINNER WINNER",JOptionPane.INFORMATION_MESSAGE);
+            ImageIcon iconWinner = new ImageIcon("src/images/winner.png");
+            String nameWinner = (String) JOptionPane.showInputDialog(view,"Sisesta palun oma nimi: ", "Võitsid mängu",JOptionPane.INFORMATION_MESSAGE,iconWinner,null,"");
+            //String nameWinner = JOptionPane.showInputDialog(view."Sisesta nimi","Võitsid",JOptionPane.INFORMATION_MESSAGE);
+            if (nameWinner.length()<2){
+                JOptionPane.showMessageDialog(view,"Nimi peab olema vähemalt kaks tähemärki");
+                nameWinner = (String) JOptionPane.showInputDialog(view,"Sisesta palun oma nimi: ", "Võitsid mängu",JOptionPane.INFORMATION_MESSAGE,iconWinner,null,"");
+            }
+            DataScores winnerScore = new DataScores(LocalDateTime.now(),nameWinner, model.getRandomWord(),missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
+            model.scoreInsert(winnerScore); //sisestab sqli. modelisse on tehtud uus meetod sisestamiseks
             view.setEndGame();
         }
 
         if (model.getMissedWordsCount()>= 7){
-            JOptionPane.showMessageDialog(null,"Kaotasid, jobu!","LOSER LOSER LOSER",JOptionPane.ERROR_MESSAGE);
+            ImageIcon iconLoser = new ImageIcon("src/images/loser.png");
+            JOptionPane.showMessageDialog(view,"Kahjuks kaotasid.","Mäng läbi",JOptionPane.ERROR_MESSAGE,iconLoser);
+
             view.setEndGame();
         }
     }

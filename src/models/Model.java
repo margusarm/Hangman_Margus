@@ -39,9 +39,15 @@ public class Model {
     Connection connection = null;
     /**
      * Sõna, mis tekib, kui uus mäng vajutada
+     * randomWord selleks, et pärast andmebaasi õiges vormingus panna
+     * Kuvamisel on kasutusel uppercase ja hidden versioon
      */
     private String randomWord;
+    private String randomWordUpperCase;
     private StringBuilder hiddenWord;
+    /**
+     * Möödapanekud listis ja numbriliselt kui palju
+     */
     private List<String> missedWordslist = new ArrayList<>();
     private int missedWordsCount;
 
@@ -88,6 +94,24 @@ public class Model {
                 dataScores.add(new DataScores(playerTime, playerName, guessWord, wrongCharacters));
 
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void scoreInsert(DataScores winnerScore){
+        String sql = "INSERT INTO scores (playertime,playername,guessword,wrongcharacters) VALUES (?,?,?,?)";
+        try{
+            Connection conn = this.dbConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            DateTimeFormatter formatSQL = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String playerTime = winnerScore.getGameTime().format(formatSQL);
+            ps.setString(1,playerTime);
+            ps.setString(2,winnerScore.getPlayerName());
+            ps.setString(3,winnerScore.getGuessWord());
+            ps.setString(4,winnerScore.getMissingLetters());
+            ps.executeUpdate();
+            scoreSelect();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -159,8 +183,8 @@ public class Model {
      * Tagastab suvalise valitud sõna kategooriast.
      * @return
      */
-    public String getRandomWord() {
-        return randomWord;
+    public String getRandomWordUpperCase() {
+        return randomWordUpperCase;
     }
 
     /**
@@ -177,6 +201,10 @@ public class Model {
 
     public int getMissedWordsCount() {
         return missedWordsCount;
+    }
+
+    public String getRandomWord() {
+        return randomWord;
     }
     //SETTERS
 
@@ -205,14 +233,14 @@ public class Model {
             }
             randomWord = wordsList.get(random.nextInt(wordsList.size()));           // valib suvalise sõna wordsListist
         }
-
-        this.randomWord = randomWord.toUpperCase();                  // kuvab selle sõna ja teeb suured tähed
+        this.randomWord = randomWord;
+        this.randomWordUpperCase = randomWord.toUpperCase();                  // kuvab selle sõna ja teeb suured tähed
         hideWord(); // tekitab ka peidetud sõna
     }
 
     public void hideWord() {
-        StringBuilder newWord = new StringBuilder(this.randomWord); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
-        for (int i = 1; i < this.randomWord.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
+        StringBuilder newWord = new StringBuilder(this.randomWordUpperCase); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
+        for (int i = 1; i < this.randomWordUpperCase.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
             char toCheck = newWord.charAt(i);
             char firstChar = newWord.charAt(0);
             char lastChar = newWord.charAt(newWord.length()-1);
@@ -234,7 +262,7 @@ public class Model {
         return join.toString();
     }
 
-    public void guessedWords(int i, char c){
+    public void guessedLetters(int i, char c){
         this.hiddenWord.setCharAt(i,c);
     }
 }

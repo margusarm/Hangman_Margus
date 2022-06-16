@@ -25,25 +25,31 @@ Ma lisasin selle, et kui sõna keskel on täht, mis kattub esimese või viimase 
 Pole küll nõutud, aga mina mäletan, et hangmanis oli nii.
 
 ~~Kui tähte ei olnud sõnas, siis loetakse kokku mitmes mööda pandud täht oli. Lisaks jäetakse täht meelde (SUURTÄHENA). Kui mööda on pandud 
-7 või rohkem tähte, siis lõppeb mäng ära.~~ Kasutajat edetabelisse ei lisata. Kui kasutaja arvab sõna ära enne seitset sammu, siis küsitakse 
-temalt nime (nimi vähemalt 2 tähte pikk) ning vajalik info lisatakse edetabelisse.
+7 või rohkem tähte, siis lõppeb mäng ära.~~ ~~Kasutajat edetabelisse ei lisata. Kui kasutaja arvab sõna ära enne seitset sammu, siis küsitakse 
+temalt nime (nimi vähemalt 2 tähte pikk) ning vajalik info lisatakse edetabelisse.~~
 
 ~~Kui tähega pandi mööda, siis tekst **Valesti 0 täht(e).**, number kasvab ning peale punkti näidatakse valesti sisestatud tähti 
-trükitähtedega eraldatud komadega.~~ Sama tähtede rida läheb ka edetabelisse, ~~kui saadakse all 7 vale täheta hakkama. Kui esimene täht 
+trükitähtedega eraldatud komadega.~~ ~~Sama tähtede rida läheb ka edetabelisse,~~ ~~kui saadakse all 7 vale täheta hakkama. Kui esimene täht 
 valesti läheb, siis JLabel, mis vigade infot näitab läheb punaseks. Kui mäng saab läbi, siis muutub tekst jälle mustaks.~~  
-Nime küsimiseks kasuta **JOptionPane.showInputDialog** lahendust. Kui kasutaja nime ei sisesta, siis kasutajat ka edetabelisse ei lisata. 
-Kui kasutaja kirjutab alla 2 märgise nime, siis ka kasutajat edetabelisse ei lisata. Lisaks antakse kasutajale ka teada, et vigase info 
-puhul teda edetabelisse ei lisata (tagant järgi).
+~~Nime küsimiseks kasuta **JOptionPane.showInputDialog** lahendust. Kui kasutaja nime ei sisesta, siis kasutajat ka edetabelisse ei lisata.~~
+~~Kui kasutaja kirjutab alla 2 märgise nime, siis ka kasutajat edetabelisse ei lisata. Lisaks antakse kasutajale ka teada, et vigase info 
+puhul teda edetabelisse ei lisata (tagant järgi).~~
+Võtsin vaba voli selle pisut teistmoodi teha. Kasutajale antakse võimalus uuesti sisestada ja antakse talle teada, et peab kaks tähemärki olema.
 ~~**Katkesta mäng** - kui seda klikitakse, siis kedagi kuhugi ei lisata. Seadistatakse algseis, et saaks alustada uut mängu (klikkida nupul **Uus mäng**).~~
 See võimekus oli ka kohe alguses olemas
 
 ## Mis info on vaja lisada edetabeli faili?
-Hetke kuupäev koos kellaajaga kujul AAAA-KK-PP HH:MM:SS. Antud tabel tahab seda aega sõnena. Mängija nimi sõnena. Sõna mida arvati. 
+~~Hetke kuupäev koos kellaajaga kujul AAAA-KK-PP HH:MM:SS. Antud tabel tahab seda aega sõnena. Mängija nimi sõnena. Sõna mida arvati. 
 Tähed mis valesti sisestati, eraldatud komaga ja SUURTÄHED. Viimane veerg võib ka tühjaks jääda, muud veerud peavad tabelis täidetud 
-olema.
+olema.~~
 
 ## Lisa võimalused
-1.	Kategooria, kus on alla mingi arvu sõnu, ei saa valida.
-2.	Tee Edetabeli lahtrid mitte muudetavaks.
-3.	Tee Sõnade tabeli lahtrid mitte muudetavaks.
+1. Kategooria, kus on alla mingi arvu sõnu, ei saa valida.
+2. Tee Edetabeli lahtrid mitte muudetavaks.
+3. Tee Sõnade tabeli lahtrid mitte muudetavaks.
+
+## Asjad, mis Margus teistmoodi tegi
+1. Kui sõna keskel on samu tähti, mis esimene või viimane, siis jäetakse ka need avatuks
+2. Kui kasutaja sisestab nimeks vähem, kui kaks tähemärki, siis tuleb INFORMATION_MESSAGE ja võimalus uuesti sisestada.
+3. Pakkuda saab ainult tähti.
 
