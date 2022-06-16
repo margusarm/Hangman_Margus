@@ -50,6 +50,7 @@ olema.~~
 
 ## Asjad, mis Margus teistmoodi tegi
 1. Kui sõna keskel on samu tähti, mis esimene või viimane, siis jäetakse ka need avatuks
-2. Kui kasutaja sisestab nimeks vähem, kui kaks tähemärki, siis tuleb INFORMATION_MESSAGE ja võimalus uuesti sisestada.
-3. Pakkuda saab ainult tähti. <-- Selle teen pisut hiljem.
+2. Kui lahtrisse midagi kirjutatud ei ole, siis  "Saada" nupp on mitteaktiivne
+3. Kui kasutaja sisestab nimeks vähem, kui kaks tähemärki, siis tuleb INFORMATION_MESSAGE ja võimalus uuesti sisestada.
+4. Pakkuda saab ainult tähti. <-- Selle teen pisut hiljem.
 
