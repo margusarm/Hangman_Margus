@@ -49,8 +49,9 @@ public class ChoicesPanel extends JPanel {
 
     /**
      * Konstruktor
+     *
      * @param model Model
-     * @param view View
+     * @param view  View
      */
     public ChoicesPanel(Model model, View view) {
         // JPanel seaded
@@ -63,7 +64,7 @@ public class ChoicesPanel extends JPanel {
 
         // JPaneli Constraints seaded "Excel"i seaded
         gbc.anchor = GridBagConstraints.WEST; // Lahtri sisu vasakule joondamine
-        gbc.insets = new Insets(2,2,2,2); // Ümberringi 2 pikselit
+        gbc.insets = new Insets(2, 2, 2, 2); // Ümberringi 2 pikselit
         gbc.fill = GridBagConstraints.BOTH; // Venitab lahtri laiuse täis. Nagu Excel!
 
         createComponents(); // Teeme KÕIK komponendid ja paneme paneelile pnlComponents
@@ -159,57 +160,73 @@ public class ChoicesPanel extends JPanel {
     }
 
     // GETTERID
+
     /**
      * Kategooria
+     *
      * @return JComboBox
      */
     public JComboBox<String> getCmbCategory() {
         return cmbCategory;
     }
+
     /**
      * Uus mängu nupp
+     *
      * @return JButton
      */
     public JButton getBtnNew() {
         return btnNew;
     }
+
     /**
      * Sisestatud tähe kast
+     *
      * @return JTextField
      */
     public JTextField getTxtChar() {
         return txtChar;
     }
+
     /**
      * Nupp saada
+     *
      * @return JButton
      */
     public JButton getBtnSend() {
         return btnSend;
     }
+
     /**
      * Edetabeli nupp
+     *
      * @return JButton
      */
     public JButton getBtnScore() {
         return btnScore;
     }
+
     /**
      * Sõnade nupp
+     *
      * @return JButton
      */
     public JButton getBtnWords() {
         return btnWords;
     }
+
     /**
      * Katkesta mängu nupp
+     *
      * @return JButton
      */
     public JButton getBtnCancel() {
         return btnCancel;
     }
+
     /**
      * Tagastab JLabeli mis sisaldab vigade ingot
+     *
      * @return JLabel
      */
     public JLabel getLblWrongInfo() {

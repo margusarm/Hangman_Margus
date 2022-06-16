@@ -19,8 +19,9 @@ public class DataWords {
 
     /**
      * Konstruktor
-     * @param id id
-     * @param word sõna
+     *
+     * @param id       id
+     * @param word     sõna
      * @param category kategooria
      */
     public DataWords(int id, String word, String category) {
@@ -32,20 +33,25 @@ public class DataWords {
 
     /**
      * Tagastab unikaalse kirje id tabelist
+     *
      * @return int
      */
     public int getId() {
         return id;
     }
+
     /**
      * Tagastab sõna
+     *
      * @return String
      */
     public String getWord() {
         return word;
     }
+
     /**
      * Tagastab kategooria
+     *
      * @return String
      */
     public String getCategory() {

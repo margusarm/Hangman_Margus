@@ -25,12 +25,13 @@ public class View extends JFrame {
 
     /**
      * Konstruktor
+     *
      * @param model Model
      */
     public View(Model model) {
         // JFrame osa
         super("Hangman for Java"); // Frame tiitelrea tekst
-        this.setPreferredSize(new Dimension(420,220)); // Frame suurus
+        this.setPreferredSize(new Dimension(420, 220)); // Frame suurus
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Et aken sulguks
         this.setLayout(new BorderLayout()); // Layout
 
@@ -50,32 +51,44 @@ public class View extends JFrame {
 
     /**
      * Nupu "Saada täht" funktsionaalsuseks
+     *
      * @param al ActionListener
      */
     public void registerButtonSend(ActionListener al) {
         choicesPanel.getBtnSend().addActionListener(al);
     }
+
     /**
      * Nupu "Uus mäng" funktsionaalsuseks
+     *
      * @param al ActionListener
      */
     public void registerButtonNew(ActionListener al) {
         choicesPanel.getBtnNew().addActionListener(al);
     }
+
     /**
      * Nupu "Edetabel" funktsionaalsuseks
+     *
      * @param al ActionListener
      */
-    public void registerButtonScore(ActionListener al) {choicesPanel.getBtnScore().addActionListener(al);}
+    public void registerButtonScore(ActionListener al) {
+        choicesPanel.getBtnScore().addActionListener(al);
+    }
+
     /**
      * Nupu "Sõnad" funktsionaalsus
+     *
      * @param al ActionListener
      */
-    public void registerButtonWords(ActionListener al) {choicesPanel.getBtnWords().addActionListener(al);}
+    public void registerButtonWords(ActionListener al) {
+        choicesPanel.getBtnWords().addActionListener(al);
+    }
 
 
     /**
      * Tähe sisestus kast
+     *
      * @return JTextField
      */
     public JTextField getTxtChar() {
@@ -84,20 +97,25 @@ public class View extends JFrame {
 
     /**
      * Tagastab comboboxi
+     *
      * @return JCombobox
      */
     public JComboBox<String> getCmbCategory() {
         return choicesPanel.getCmbCategory();
     }
+
     /**
      * Tagastab uue mängu nupu
+     *
      * @return JButton
      */
     public JButton getBtnNew() {
         return choicesPanel.getBtnNew();
     }
+
     /**
      * Tagastab nupu Saada tähte nupu
+     *
      * @return JButton
      */
     public JButton getBtnSend() {
@@ -106,27 +124,34 @@ public class View extends JFrame {
 
     /**
      * Tagasta nupp Sõnad
+     *
      * @return JButton
      */
     public JButton getBtnWords() {
         return choicesPanel.getBtnWords();
     }
+
     /**
      * Tagastab Katkesta mäng nupu
+     *
      * @return JButton
      */
     public JButton getBtnCancel() {
         return choicesPanel.getBtnCancel();
     }
+
     /**
      * Tagastab JLabeli mis näitab mängijale hetke seisu. Tähti ja allkriipse
+     *
      * @return JLabel
      */
     public JLabel getLblGuessWord() {
         return wordPanel.getLblGuessWord();
     }
+
     /**
      * Tagsatab lbalei mis sisaldab vigast infot
+     *
      * @return JLabel
      */
     public JLabel getLblWrongInfo() {
@@ -134,6 +159,7 @@ public class View extends JFrame {
     }
 
     // SETTERS
+
     /**
      * Seadistab mängu ALGSEISU nuppude ja tekstiväljadega seoses. See kutsuda siis, kui kogu mängu info on olemas.
      */
@@ -154,6 +180,7 @@ public class View extends JFrame {
         //getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         //getLblWrongInfo().setForeground(Color.RED); // Muuda teksti värv vaikimsii mustaks
     }
+
     /**
      * Seadistab mängu LÕPPSEISU nuppude ja tekstiväljadega seoses. See kustuda siis kui mängu lõpp tulemus on teada
      * ja mäng on KINDLASTI lõppenud

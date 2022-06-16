@@ -29,7 +29,7 @@ public class ButtonWords implements ActionListener {
     /**
      * Tabeli päise veergude nimed String[] listina
      */
-    private String[] header = new String[] {"Sõna", "Kategooria"};
+    private String[] header = new String[]{"Sõna", "Kategooria"};
     /**
      * Siia JDialog aknale pannakse Sõnade tabeli sisu
      */
@@ -37,8 +37,9 @@ public class ButtonWords implements ActionListener {
 
     /**
      * Konstruktor
+     *
      * @param model Model
-     * @param view View
+     * @param view  View
      */
     public ButtonWords(Model model, View view) {
         this.model = model;
@@ -48,6 +49,7 @@ public class ButtonWords implements ActionListener {
 
     /**
      * Kui klikitakse nuppu Sõnad
+     *
      * @param e the event to be processed
      */
     @Override
@@ -58,6 +60,7 @@ public class ButtonWords implements ActionListener {
 
         view.getTxtChar().requestFocus(); // Peale selle nupu klikkimist anna fookus teksti kastile
     }
+
     /**
      * Teeb dialogi akna ette määratud suurusega
      */
@@ -65,6 +68,7 @@ public class ButtonWords implements ActionListener {
         dialogWords = new JDialog();
         dialogWords.setPreferredSize(new Dimension(500, 200));
     }
+
     /**
      * Teeb tabeli sõnade jaoks ja lisab dialogWords dialoogi aknale
      */

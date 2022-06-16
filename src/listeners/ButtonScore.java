@@ -30,7 +30,7 @@ public class ButtonScore implements ActionListener {
     /**
      * Päise String[] list
      */
-    private String[] header = new String[] {"Kuupäev", "Nimi", "Sõna", "Tähed"};
+    private String[] header = new String[]{"Kuupäev", "Nimi", "Sõna", "Tähed"};
     /**
      * Siia Dialog-i aknasse pannakse edetabeli tabel
      */
@@ -38,8 +38,9 @@ public class ButtonScore implements ActionListener {
 
     /**
      * Konstruktor
+     *
      * @param model mudel
-     * @param view vaade
+     * @param view  vaade
      */
     public ButtonScore(Model model, View view) {
         this.model = model;
@@ -50,6 +51,7 @@ public class ButtonScore implements ActionListener {
 
     /**
      * Kui klikitakse nupul Edetabel
+     *
      * @param e the event to be processed
      */
     @Override

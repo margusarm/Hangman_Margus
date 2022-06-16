@@ -25,9 +25,10 @@ public class DataScores {
 
     /**
      * Konstruktor
-     * @param gameTime LocalDateTime
-     * @param playerName String
-     * @param guessWord String
+     *
+     * @param gameTime       LocalDateTime
+     * @param playerName     String
+     * @param guessWord      String
      * @param missingLetters String
      */
     public DataScores(LocalDateTime gameTime, String playerName, String guessWord, String missingLetters) {
@@ -39,27 +40,34 @@ public class DataScores {
 
     /**
      * Tagastab kuupäeva ja aja
+     *
      * @return LocalDateTime
      */
     public LocalDateTime getGameTime() {
         return gameTime;
     }
+
     /**
      * Tagastab mängija nime
+     *
      * @return String
      */
     public String getPlayerName() {
         return playerName;
     }
+
     /**
      * Tagastab äraarvatud sõna
+     *
      * @return String
      */
     public String getGuessWord() {
         return guessWord;
     }
+
     /**
      * Tasgastab valesti sisestatud tähed
+     *
      * @return String
      */
     public String getMissingLetters() {

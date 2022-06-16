@@ -57,8 +57,8 @@ public class ButtonSend implements ActionListener {
         String[] wordCharArray = guessWord.split(""); //tee arvatav sõna arrayks
         boolean miss = true;
 
-        if (model.getMissedWordsList().contains(guessStringChar)){ // kontrollib, kas pakutud ja mööda pandud tähte on juba pakutud.
-            JOptionPane.showMessageDialog(null,"Sa oled juba pakkunud tähte \""+guessStringChar+"\"","Korduv pakkumine",JOptionPane.ERROR_MESSAGE);
+        if (model.getMissedWordsList().contains(guessStringChar)) { // kontrollib, kas pakutud ja mööda pandud tähte on juba pakutud.
+            JOptionPane.showMessageDialog(null, "Sa oled juba pakkunud tähte \"" + guessStringChar + "\"", "Korduv pakkumine", JOptionPane.ERROR_MESSAGE);
             miss = false;   //peab seda ka panema, muid loeb ikka tähe ära
         } else {
             for (int i = 1; i < wordCharArray.length - 1; i++) {
@@ -71,7 +71,7 @@ public class ButtonSend implements ActionListener {
             }
         }
 
-        if (miss){
+        if (miss) {
             model.getMissedWordsList().add(guessStringChar);
             view.getLblWrongInfo().setForeground(Color.RED);
         }
@@ -82,29 +82,29 @@ public class ButtonSend implements ActionListener {
 
         String wordUpdate = model.wordSpacer(model.getHiddenWord().toString()); //võtab peidetud tähed uuesti ja paneb tühikud vahele
         view.getLblGuessWord().setText(wordUpdate);                 // paneb arvatud tähtedega sõna uuesti labelile
-        String missedWordsStream = model.getMissedWordsList().toString().replace("[","").replace("]",""); // võtab [] ära, sest nii on ilusam
+        String missedWordsStream = model.getMissedWordsList().toString().replace("[", "").replace("]", ""); // võtab [] ära, sest nii on ilusam
         model.setMissedWordsCount(model.getMissedWordsList().size());
         view.getLblWrongInfo().setText("Valesti " + model.getMissedWordsCount() + " täht(e). " + missedWordsStream); // uuendab, mitu sõna mööda pandud ja näitab sõnu
         //System.out.println(model.getMissedWordsList().size());
         view.getTxtChar().setText("");
 
-        if (!model.getHiddenWord().toString().contains("_")){ //kontrollib, ega võitnud juba ei ole
+        if (!model.getHiddenWord().toString().contains("_")) { //kontrollib, ega võitnud juba ei ole
             ImageIcon iconWinner = new ImageIcon("src/images/winner.png");
-            String nameWinner = (String) JOptionPane.showInputDialog(view,"Sisesta palun oma nimi: ", "Võitsid mängu",JOptionPane.INFORMATION_MESSAGE,iconWinner,null,"");
+            String nameWinner = (String) JOptionPane.showInputDialog(view, "Sisesta palun oma nimi: ", "Võitsid mängu", JOptionPane.INFORMATION_MESSAGE, iconWinner, null, "");
             //String nameWinner = JOptionPane.showInputDialog(view."Sisesta nimi","Võitsid",JOptionPane.INFORMATION_MESSAGE);
-            if (nameWinner.length()<2){
-                JOptionPane.showMessageDialog(view,"Nimi peab olema vähemalt kaks tähemärki");
-                nameWinner = (String) JOptionPane.showInputDialog(view,"Sisesta palun oma nimi: ", "Võitsid mängu",JOptionPane.INFORMATION_MESSAGE,iconWinner,null,"");
+            if (nameWinner.length() < 2) {
+                JOptionPane.showMessageDialog(view, "Nimi peab olema vähemalt kaks tähemärki");
+                nameWinner = (String) JOptionPane.showInputDialog(view, "Sisesta palun oma nimi: ", "Võitsid mängu", JOptionPane.INFORMATION_MESSAGE, iconWinner, null, "");
             }
-            DataScores winnerScore = new DataScores(LocalDateTime.now(),nameWinner, model.getRandomWord(),missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
+            DataScores winnerScore = new DataScores(LocalDateTime.now(), nameWinner, model.getRandomWord(), missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
             model.scoreInsert(winnerScore); //sisestab sqli. modelisse on tehtud uus meetod sisestamiseks
             model.getDataScores().add(winnerScore); //lisab viimase score ka datascores listi. teine variant on teha SQLi uue päringu, aga listi lisamine koormab vähem sql serverit ja annab sama tulemuse kasutajale
             view.setEndGame();
         }
 
-        if (model.getMissedWordsCount()>= 7){
+        if (model.getMissedWordsCount() >= 7) {
             ImageIcon iconLoser = new ImageIcon("src/images/loser.png");
-            JOptionPane.showMessageDialog(view,"Kahjuks kaotasid.","Mäng läbi",JOptionPane.ERROR_MESSAGE,iconLoser);
+            JOptionPane.showMessageDialog(view, "Kahjuks kaotasid.", "Mäng läbi", JOptionPane.ERROR_MESSAGE, iconLoser);
 
             view.setEndGame();
         }
