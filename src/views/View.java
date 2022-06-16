@@ -195,7 +195,7 @@ public class View extends JFrame {
         getTxtChar().setText("");   // Sisestatud tähe tühjendamine
         getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
-        getLblGuessWord().setText("P R O O _ I  U _ E S T I   :D");
+        getLblGuessWord().setText("P R O O _ I  U _ E S T I   :D"); //lihtsalt selleks, et viimane sõna sinna hängima ei jääks
 
 
     }

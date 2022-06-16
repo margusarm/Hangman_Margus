@@ -38,17 +38,26 @@ public class Model {
      */
     Connection connection = null;
     /**
-     * Sõna, mis tekib, kui uus mäng vajutada
-     * randomWord selleks, et pärast andmebaasi õiges vormingus panna
-     * Kuvamisel on kasutusel uppercase ja hidden versioon
+     * Sõna, mis tekib, kui uus mäng vajutada.
+     * Sama vorming, mis andmebaasis.
      */
     private String randomWord;
+    /**
+     * randomWord läbivate suurtähtedega. enamik osa rakendusest kasutab seda
+     */
     private String randomWordUpperCase;
+    /**
+     * Peidetud randomWord stiilis P______D
+     * Peab jätma ilma tühikuteta, et tähti lihtsam avada oleks.
+     */
     private StringBuilder hiddenWord;
     /**
-     * Möödapanekud listis ja numbriliselt kui palju
+     * Valesti arvatud tähed listina.
      */
     private List<String> missedWordslist = new ArrayList<>();
+    /**
+     * Valesti arvatud tähtede arv.
+     */
     private int missedWordsCount;
 
     /**
@@ -99,6 +108,10 @@ public class Model {
         }
     }
 
+    /**
+     * Võtab objekti DataScore ja lisab selle andmebaasi
+     * @param winnerScore
+     */
     public void scoreInsert(DataScores winnerScore){
         String sql = "INSERT INTO scores (playertime,playername,guessword,wrongcharacters) VALUES (?,?,?,?)";
         try{
@@ -180,7 +193,17 @@ public class Model {
     }
 
     /**
+     * Tagastab andmebaasist valitud suvalise sõna.
+     * Sõna vorming on sama, mis andmebaasis
+     * @return
+     */
+    public String getRandomWord() {
+        return randomWord;
+    }
+
+    /**
      * Tagastab suvalise valitud sõna kategooriast.
+     * Sõna vorming on läbivalt suurtähtedega.
      * @return
      */
     public String getRandomWordUpperCase() {
@@ -195,26 +218,35 @@ public class Model {
         return hiddenWord;
     }
 
+    /**
+     * Tagastab valesti arvatud tähed listina.
+     * @return
+     */
     public List<String> getMissedWordsList() {
         return missedWordslist;
     }
 
+    /**
+     * Tagastab valesti arvatud tähtede arvu.
+     * @return
+     */
     public int getMissedWordsCount() {
         return missedWordsCount;
     }
 
-    public String getRandomWord() {
-        return randomWord;
-    }
+
     //SETTERS
 
-
+    /**
+     * Määrab valesti arvatud töhtede arvu.
+     * @param missedWordsCount
+     */
     public void setMissedWordsCount(int missedWordsCount) {
         this.missedWordsCount = missedWordsCount;
     }
 
     /**
-     * Võtab kategooria ja kuvab vastavad sõnad listi ning võtab lambi sõna
+     * Võtab kategooria ja kuvab vastavad sõnad listi ning võtab suvalise sõna.
      * @param category
      */
     public void setRandomWordByCategory(String category){
@@ -238,6 +270,9 @@ public class Model {
         hideWord(); // tekitab ka peidetud sõna
     }
 
+    /**
+     * Määrab hiddenWordi. Peidab tähed ära.
+     */
     public void hideWord() {
         StringBuilder newWord = new StringBuilder(this.randomWordUpperCase); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
         for (int i = 1; i < this.randomWordUpperCase.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
@@ -251,6 +286,12 @@ public class Model {
         }
         this.hiddenWord = newWord;
     }
+
+    /**
+     * Lisab sisestatud stringile tühikud vahele.
+     * @param word
+     * @return
+     */
     public String wordSpacer(String word) {
         String[] wordCharArray = word.split("");        //teeb sõna arrayks
         StringJoiner join = new StringJoiner(" "); // äkki peaks kaks tühikut panema.
@@ -262,6 +303,12 @@ public class Model {
         return join.toString();
     }
 
+    /**
+     * Muudab hiddenWordis i indeksiga tähele väärtuseks sisendi c.
+     * Siin rakenduses kasutatakse selleks, et avada hiddenWordis tähti.
+     * @param i
+     * @param c
+     */
     public void guessedLetters(int i, char c){
         this.hiddenWord.setCharAt(i,c);
     }
