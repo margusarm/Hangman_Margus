@@ -43,7 +43,6 @@ public class ButtonSend implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //FIXME kogu see jura, mis siin all kirjas on, tuleks pisut paremini kokku võtta
-        //FIXME kui kasutaja pakub tähti, mis on esimene või viimane, siis neid ei tohiks arvesse võtta
         //FIXME sümboleid ei tohiks saada pakkuda.
         //JOptionPane.showMessageDialog(null, "Kes vajutas nuppu/Enter: " + view.getTxtChar().getText().toUpperCase());
         /*
@@ -99,6 +98,7 @@ public class ButtonSend implements ActionListener {
             }
             DataScores winnerScore = new DataScores(LocalDateTime.now(),nameWinner, model.getRandomWord(),missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
             model.scoreInsert(winnerScore); //sisestab sqli. modelisse on tehtud uus meetod sisestamiseks
+            model.getDataScores().add(winnerScore); //lisab viimase score ka datascores listi. teine variant on teha SQLi uue päringu, aga listi lisamine koormab vähem sql serverit ja annab sama tulemuse kasutajale
             view.setEndGame();
         }
 

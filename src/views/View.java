@@ -170,5 +170,6 @@ public class View extends JFrame {
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
         getLblGuessWord().setText("P R O O _ I  U _ E S T I   :D");
 
+
     }
 }

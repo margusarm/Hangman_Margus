@@ -44,12 +44,12 @@ Tähed mis valesti sisestati, eraldatud komaga ja SUURTÄHED. Viimane veerg või
 olema.~~
 
 ## Lisa võimalused
-1. Kategooria, kus on alla mingi arvu sõnu, ei saa valida.
-2. Tee Edetabeli lahtrid mitte muudetavaks.
-3. Tee Sõnade tabeli lahtrid mitte muudetavaks.
+1. Kategooria, kus on alla mingi arvu sõnu, ei saa valida. <-- seda ma ei tee, sest tundub minu jaoks ebaloogiline. neid ei peaks siis ju kasutajale kuvamagi.
+2. ~~Tee Edetabeli lahtrid mitte muudetavaks.~~
+3. ~~Tee Sõnade tabeli lahtrid mitte muudetavaks.~~
 
 ## Asjad, mis Margus teistmoodi tegi
 1. Kui sõna keskel on samu tähti, mis esimene või viimane, siis jäetakse ka need avatuks
 2. Kui kasutaja sisestab nimeks vähem, kui kaks tähemärki, siis tuleb INFORMATION_MESSAGE ja võimalus uuesti sisestada.
-3. Pakkuda saab ainult tähti.
+3. Pakkuda saab ainult tähti. <-- Selle teen pisut hiljem.
 

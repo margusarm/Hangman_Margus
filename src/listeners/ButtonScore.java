@@ -75,6 +75,7 @@ public class ButtonScore implements ActionListener {
     private void createScoreboard() {
         DefaultTableModel dtm = new DefaultTableModel();
         table = new JTable(dtm);
+        table.setDefaultEditor(Object.class, null); // teeb tabeli lahtrid mitte muudetavaks
 
         // Tabeli päis
         for (String column : header) {
@@ -99,4 +100,5 @@ public class ButtonScore implements ActionListener {
         dialogScore.setModal(true);
         dialogScore.setVisible(true);
     }
+
 }

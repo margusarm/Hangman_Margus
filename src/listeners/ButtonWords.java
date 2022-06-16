@@ -71,6 +71,7 @@ public class ButtonWords implements ActionListener {
     private void createWordsBoard() {
         DefaultTableModel dtm = new DefaultTableModel();
         table = new JTable(dtm);
+        table.setDefaultEditor(Object.class, null); // teeb tabeli lahtrid mitte muudetavaks
 
         // Tabeli päis
         for (String column : header) {
