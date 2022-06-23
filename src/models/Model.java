@@ -113,6 +113,7 @@ public class Model {
      * @param winnerScore
      */
     public void scoreInsert(DataScores winnerScore){
+        //TODO lisa see, et kui tabelit pole, siis tekitatakse
         String sql = "INSERT INTO scores (playertime,playername,guessword,wrongcharacters) VALUES (?,?,?,?)";
         try{
             Connection conn = this.dbConnection();
@@ -133,6 +134,7 @@ public class Model {
      * SELECT lause tabeli words sisu lugemiseks ja info dataWords listi lisamiseks
      */
     public void wordsSelect() {
+        //TODO lisa see, et kui tabelit pole, siis tekitatakse
         String sql = "SELECT * FROM words ORDER BY category, word";
         List<String> categories = new ArrayList<>(); // NB! See on meetodi sisene muutuja categories!
         try {
@@ -275,6 +277,12 @@ public class Model {
      */
     public void hideWord() {
         StringBuilder newWord = new StringBuilder(this.randomWordUpperCase); // see peaks töötama ka lihtsalt stringiga, aga ei hakka tagasi muutma.
+        for (int i = 0; i < this.randomWordUpperCase.length(); i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
+                newWord.setCharAt(i, '_');
+
+        }
+        /* Siin versioon, mis avab juba esimese ja viimase tähe
+
         for (int i = 1; i < this.randomWordUpperCase.length() - 1; i++) { // käib stringi kõik tähed va esimene ja viimane, ning muudab nad alakriipsuks
             char toCheck = newWord.charAt(i);
             char firstChar = newWord.charAt(0);
@@ -284,6 +292,7 @@ public class Model {
             }
 
         }
+        */
         this.hiddenWord = newWord;
     }
 

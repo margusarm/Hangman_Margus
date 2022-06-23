@@ -61,7 +61,7 @@ public class ButtonSend implements ActionListener {
             JOptionPane.showMessageDialog(null, "Sa oled juba pakkunud tähte \"" + guessStringChar + "\"", "Korduv pakkumine", JOptionPane.ERROR_MESSAGE);
             miss = false;   //peab seda ka panema, muid loeb ikka tähe ära
         } else {
-            for (int i = 1; i < wordCharArray.length - 1; i++) {
+            for (int i = 0; i < wordCharArray.length; i++) {
                 if (wordCharArray[i].equalsIgnoreCase(guessStringChar)) {
                     //System.out.println("great success!");
                     model.getHiddenWord().setCharAt(i, guessChar); // avaldab ära arvatud tähed ja määrab uue stringi

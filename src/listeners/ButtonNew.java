@@ -50,6 +50,7 @@ public class ButtonNew implements ActionListener {
         model.setRandomWordByCategory(category); //määrab valitud kategooria järgi suvalise sõna
         String spacedWord = model.wordSpacer(model.getHiddenWord().toString()); // lisab tühikud
         view.getLblGuessWord().setText(spacedWord); //paneb sõna lblGuessWordile
+        System.out.println(model.getRandomWord());
 
     }
 

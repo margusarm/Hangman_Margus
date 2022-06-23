@@ -6,10 +6,10 @@ import javax.swing.event.DocumentListener;
 
 
 //http://www.java2s.com/Tutorials/Java/Swing_How_to/JTextField/Enable_or_disable_a_JButton_based_on_JTextField_content.htm
-public class JButtonStateController implements DocumentListener {
+public class JButtonStateListener implements DocumentListener {
     JButton button;
 
-    public JButtonStateController(JButton button) {
+    public JButtonStateListener(JButton button) {
         this.button = button;
     }
 
