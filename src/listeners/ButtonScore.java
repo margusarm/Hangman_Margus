@@ -25,9 +25,13 @@ public class ButtonScore implements ActionListener {
      * Päise String[] list
      */
     private final String[] header = new String[] {"Kuupäev", "Nimi", "Sõna", "Tähed"};
+    /**
+     * Seda kasutatakse üks kord seda (ButtonScore) objekti tehes.
+     * Tekitab tabeli päise ilma kirjeteta
+     */
     private final DefaultTableModel dtm = new DefaultTableModel(header, 0);
     /**
-     * JTable
+     * JTable, millel ka tabeli sisu osa olemas. Hetkel tühi!
      */
     private final JTable table = new JTable(dtm);
 
@@ -44,8 +48,8 @@ public class ButtonScore implements ActionListener {
     public ButtonScore(Model model, View view) {
         this.model = model;
         this.view = view;
-        model.setDtm(dtm);
-        createDialog();
+        model.setDtm(dtm); // Seadistame olemasoleva model jaoks
+        createDialog(); // Loob dialoogi akna ja paneb sellel ka tabeli päise aga ilma andmeteta
     }
 
     /**
@@ -57,7 +61,7 @@ public class ButtonScore implements ActionListener {
         //JOptionPane.showMessageDialog(null, "Keegi klikkis edetabeli nuppu!");
         model.scoreSelect(); // Loeme kogu sisu uuesti listi
         //createScoreboard(); // Teeb dialoogi akna
-        view.updateTable(); // Uuendmae andmeid dialogi akna tabelis
+        view.updateTable(); // Uuendame andmeid dialoogi akna tabelis
         dialogScore.setVisible(true); // Teeme dialoogiakna nähtavaks
         view.getTxtChar().requestFocus(); // Peale selle nupu klikkimist anna fookus tekstikastile
     }

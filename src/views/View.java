@@ -36,7 +36,6 @@ public class View extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Et aken sulguks
         this.setLayout(new BorderLayout()); // Layout
 
-
         this.model = model; // View tahab ka modelit kasutada
 
         choicesPanel = new ChoicesPanel(model, this); // Teeme ülemise paneeli
@@ -165,6 +164,9 @@ public class View extends JFrame {
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
     }
 
+    /**
+     * See uuendab JDialog aknas JTabel infot
+     */
     public void updateTable() {
         model.getDtm().setRowCount(0);
         String gametime = null;

@@ -36,7 +36,9 @@ public class Model {
      * Andmebaasi ühendust algselt pole
      */
     private Connection connection = null;
-
+    /**
+     * See on tegelik dtm mida kasutatakse tabeli puhul.
+     */
     private DefaultTableModel dtm = new DefaultTableModel();
     /**
      * Konstruktor
