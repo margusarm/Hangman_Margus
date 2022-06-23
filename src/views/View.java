@@ -1,10 +1,12 @@
 package views;
 
+import models.DataScores;
 import models.Model;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Klass View (Üldine)
@@ -13,15 +15,15 @@ public class View extends JFrame {
     /**
      * Mudel
      */
-    private Model model;
+    private final Model model;
     /**
      * Paneel mis sisaldab komponentide paneeli
      */
-    private ChoicesPanel choicesPanel; // ÜLemine paneel JButton, JTextField, JLabel komponentidele
+    private final ChoicesPanel choicesPanel; // ÜLemine paneel JButton, JTextField, JLabel komponentidele
     /**
      * Paneel mis näitab äraarvatava sõna näitamist
      */
-    private WordPanel wordPanel; // Paneel kus on äraarvatav sõna (algeselt H A K K A M E  M Ä N G I M A)
+    private final WordPanel wordPanel; // Paneel kus on äraarvatav sõna (algeselt H A K K A M E  M Ä N G I M A)
 
     /**
      * Konstruktor
@@ -161,5 +163,17 @@ public class View extends JFrame {
         getTxtChar().setText("");   // Sisestatud tähe tühjendamine
         getLblWrongInfo().setText("Valesti 0 täht(e). "); // Muuda vigade teavitus vaikimisi tekstiks
         getLblWrongInfo().setForeground(Color.BLACK); // Muuda teksti värv vaikimsii mustaks
+    }
+
+    public void updateTable() {
+        model.getDtm().setRowCount(0);
+        String gametime = null;
+        for (DataScores ds : model.getDataScores()) {
+            gametime = ds.getGameTime().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+            String name = ds.getPlayerName();
+            String word = ds.getGuessWord();
+            String chars = ds.getMissingLetters();
+            model.getDtm().addRow(new Object[]{gametime, name, word, chars});
+        }
     }
 }

@@ -1,5 +1,6 @@
 package models;
 
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,8 +35,9 @@ public class Model {
     /**
      * Andmebaasi ühendust algselt pole
      */
-    Connection connection = null;
+    private Connection connection = null;
 
+    private DefaultTableModel dtm = new DefaultTableModel();
     /**
      * Konstruktor
      */
@@ -122,7 +124,9 @@ public class Model {
             categories[x+1] = unique.get(x);
         }
     }
-
+    public void setDtm(DefaultTableModel dtm) {
+        this.dtm = dtm;
+    }
     // GETTERS
     /**
      * Tagasta kategooriad
@@ -144,5 +148,9 @@ public class Model {
      */
     public List<DataWords> getDataWords() {
         return dataWords;
+    }
+
+    public DefaultTableModel getDtm() {
+        return dtm;
     }
 }
