@@ -221,7 +221,7 @@ public class Model {
     public DefaultTableModel getDtm() {
         return dtm;
     }
-}
+
 
     /**
      * Tagastab suvalise valitud sõna selliselt, et keskmised sõnad on peidetud "_" alla.
