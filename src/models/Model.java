@@ -1,5 +1,6 @@
 package models;
 
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,7 +37,11 @@ public class Model {
     /**
      * Andmebaasi ühendust algselt pole
      */
-    Connection connection = null;
+    private Connection connection = null;
+    /**
+     * See on tegelik dtm mida kasutatakse tabeli puhul.
+     */
+    private DefaultTableModel dtm = new DefaultTableModel();
     /**
      * Sõna, mis tekib, kui uus mäng vajutada.
      * Sama vorming, mis andmebaasis.
@@ -134,7 +139,6 @@ public class Model {
      * SELECT lause tabeli words sisu lugemiseks ja info dataWords listi lisamiseks
      */
     public void wordsSelect() {
-        //TODO lisa see, et kui tabelit pole, siis tekitatakse
         String sql = "SELECT * FROM words ORDER BY category, word";
         List<String> categories = new ArrayList<>(); // NB! See on meetodi sisene muutuja categories!
         try {
@@ -170,7 +174,9 @@ public class Model {
             categories[x+1] = unique.get(x);
         }
     }
-
+    public void setDtm(DefaultTableModel dtm) {
+        this.dtm = dtm;
+    }
     // GETTERS
     /**
      * Tagasta kategooriad
@@ -211,6 +217,11 @@ public class Model {
     public String getRandomWordUpperCase() {
         return randomWordUpperCase;
     }
+
+    public DefaultTableModel getDtm() {
+        return dtm;
+    }
+}
 
     /**
      * Tagastab suvalise valitud sõna selliselt, et keskmised sõnad on peidetud "_" alla.
