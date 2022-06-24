@@ -45,7 +45,6 @@ public class ButtonScore implements ActionListener {
     public ButtonScore(Model model, View view) {
         this.model = model;
         this.view = view;
-
         createDialog();
     }
 
@@ -69,12 +68,15 @@ public class ButtonScore implements ActionListener {
     private void createDialog() {
         dialogScore = new JDialog();
         dialogScore.setPreferredSize(new Dimension(500, 200));
+
+
     }
 
     /**
      * Teeb Edetabeli tabeli sisu valmis ja pannakse dialog-i aknale.
      */
     private void createScoreboard() {
+
         DefaultTableModel dtm = new DefaultTableModel();
         table = new JTable(dtm);
         table.setDefaultEditor(Object.class, null); // teeb tabeli lahtrid mitte muudetavaks
@@ -95,6 +97,7 @@ public class ButtonScore implements ActionListener {
         /**
          * Need read panevad tehtud tabeli dialogi aknale.
          */
+        dialogScore.dispose();
         dialogScore.add(new JScrollPane(table));
         dialogScore.setTitle("Edetabel");
         dialogScore.pack();
