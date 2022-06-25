@@ -41,7 +41,7 @@ public class JButtonStateListener implements DocumentListener {
         //kuidas tsekkida, kas string koosneb ainult tähestikumärkidest
         //https://www.tutorialkart.com/java/how-to-check-if-string-contains-only-alphabets-in-java/#:~:text=To%20check%20if%20String%20contains%20only%20alphabets%20in%20Java%2C%20call,alphabets%20(uppercase%20or%20lowercase).
 
-        if (text.matches("[a-zA-Z]+") && e.getDocument().getLength() > 0) result = true; // kui kõik tingimused on täidetud, siis enableb buttoni
+        if (text.matches("[a-yüõöäA-YÜÕÖÄ]+") && e.getDocument().getLength() > 0) result = true; // kui kõik tingimused on täidetud, siis enableb buttoni
         else result = false;
 
         //System.out.println(text);
