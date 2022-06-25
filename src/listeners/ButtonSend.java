@@ -43,7 +43,6 @@ public class ButtonSend implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //FIXME kogu see jura, mis siin all kirjas on, tuleks pisut paremini kokku võtta
-        //FIXME sümboleid ei tohiks saada pakkuda.
         //JOptionPane.showMessageDialog(null, "Kes vajutas nuppu/Enter: " + view.getTxtChar().getText().toUpperCase());
         /*
          * @author Margus Arm
