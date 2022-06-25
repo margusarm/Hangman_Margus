@@ -90,16 +90,24 @@ public class ButtonSend implements ActionListener {
 
         if (!model.getHiddenWord().toString().contains("_")) { //kontrollib, ega võitnud juba ei ole
             ImageIcon iconWinner = new ImageIcon("src/images/winner.png");
-            String nameWinner = (String) JOptionPane.showInputDialog(view, "Sisesta palun oma nimi: ", "Võitsid mängu", JOptionPane.INFORMATION_MESSAGE, iconWinner, null, "");
             //String nameWinner = JOptionPane.showInputDialog(view."Sisesta nimi","Võitsid",JOptionPane.INFORMATION_MESSAGE);
-            if (nameWinner.length() < 2) {
-                JOptionPane.showMessageDialog(view, "Nimi peab olema vähemalt kaks tähemärki");
+            String nameWinner;
+            do {
                 nameWinner = (String) JOptionPane.showInputDialog(view, "Sisesta palun oma nimi: ", "Võitsid mängu", JOptionPane.INFORMATION_MESSAGE, iconWinner, null, "");
-            }
-            DataScores winnerScore = new DataScores(LocalDateTime.now(), nameWinner, model.getRandomWord(), missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
-            model.scoreInsert(winnerScore); //sisestab sqli. modelisse on tehtud uus meetod sisestamiseks
-            model.getDataScores().add(winnerScore); //lisab viimase score ka datascores listi. teine variant on teha SQLi uue päringu, aga listi lisamine koormab vähem sql serverit ja annab sama tulemuse kasutajale
-            view.setEndGame();
+                if (nameWinner == null) {
+                    view.setEndGame();
+                    break;
+                } else if (nameWinner.trim().length() < 2) {
+                    JOptionPane.showMessageDialog(view, "Nimi peab olema vähemalt kaks tähemärki");
+                } else if (nameWinner.trim().length() >= 2) {
+                    DataScores winnerScore = new DataScores(LocalDateTime.now(), nameWinner, model.getRandomWord(), missedWordsStream); //loob uue objekti. sobib sama, millega andmeid sqlist võetakse
+                    model.scoreInsert(winnerScore); //sisestab sqli. modelisse on tehtud uus meetod sisestamiseks
+                    model.getDataScores().add(winnerScore); //lisab viimase score ka datascores listi. teine variant on teha SQLi uue päringu, aga listi lisamine koormab vähem sql serverit ja annab sama tulemuse kasutajale
+                    view.setEndGame();
+                }
+            } while (nameWinner.trim().length() < 2);
+
+
         }
 
         if (model.getMissedWordsCount() >= 7) {
